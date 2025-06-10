@@ -6,15 +6,17 @@ export const POST_QUERY =
   _createdAt,
   title,
   content,
-  imageUrl
+  imageUrl,
+  slug ,
+  "slug": slug.current
 }`);
 
-export const POST_DETAIL_QUERY = (
-  postId: string
-) => `*[_type == "post" && _id == "${postId}"][0]{
+export const POST_DETAIL_QUERY = `*[_type == "post" && slug.current == $slug][0]{
   _id,
   title,
   content,
   imageUrl,
-  _createdAt
+  _createdAt,
+  slug,
+  "slug": slug.current
 }`;

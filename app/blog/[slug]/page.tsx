@@ -1,3 +1,4 @@
+// app/blog/[id]/page.tsx
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Image from "next/image";
@@ -18,12 +19,14 @@ type Props = {
 };
 
 export default async function BlogDetailPage({ params }: Props) {
-  const slug = params.slug;
-
-  if (!slug || typeof slug !== "string") {
+  // Validasi ID
+  if (!params.slug || typeof params.slug !== "string") {
     notFound();
   }
 
+  const slug = params.slug;
+
+  // Fetch dari Sanity
   const post = await client.fetch(POST_DETAIL_QUERY, { slug });
 
   if (!post) {

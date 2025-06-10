@@ -10,6 +10,8 @@ type Post = {
   title: string;
   content: string;
   imageUrl: string;
+  _createdAt: string;
+  slug: string;
   // Add other properties as needed
 };
 const BlogCardSection = () => {
@@ -68,7 +70,7 @@ const BlogCardSection = () => {
                 {post.title}
               </h3>
               <Link
-                href={`/blog/${post._id}`}
+                href={`/blog/${post.slug}`}
                 className="text-sm font-semibold text-red-600 hover:underline">
                 READ MORE →
               </Link>
